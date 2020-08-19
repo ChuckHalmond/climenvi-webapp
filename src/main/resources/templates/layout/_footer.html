@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+  
+      <!-- Begin Footer -->
+      <footer th:fragment="_footer" class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>
+              Climenvi, Centre Val de Loire -
+              <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}"></span>
+            </span>
+          </div>
+        </div>
+      </footer>
+      <!-- End Footer -->
+
+	</body>
+</html>

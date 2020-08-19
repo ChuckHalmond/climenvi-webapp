@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+
+    <!-- Begin Sidebar -->
+    <div th:fragment="_sidebar" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+    
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand" th:href="@{/}">
+        <span class="sidebar-brand-icon">
+          <img th:src="@{~/img/climenvi.png}"/>
+        </span>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <div class="nav-item active">
+        <a class="nav-link" th:href="@{/}">
+          <i class="fas fa-fw fa-home"></i>
+          <span>Accueil</span>
+        </a>
+      </div>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Général
+      </div>
+      
+      <!-- Nav Item - Dashboard -->
+      <div class="nav-item active">
+        <a class="nav-link" th:href="@{/indices}">
+          <i class="fas fa-fw fa-chart-bar"></i>
+          <span>Indices</span>
+        </a>
+      </div>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </div>
+    <!-- End Sidebar -->
+
+	</body>
+</html>

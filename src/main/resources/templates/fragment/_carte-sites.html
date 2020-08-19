@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+  	<meta charset="UTF-8">
+  	<title>Insert title here</title>
+  </head>
+  <body>
+
+    <!-- Begin Fragment - Carte Sites -->
+    <div th:fragment="_carte-sites" class="carte-sites card-container col-lg-6 col-sm-12">
+
+      <!-- Begin Card -->
+      <div class="card shadow mb-4">
+
+        <!-- Card Header -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Sites</h6>
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body">
+        
+            <!-- Site Select -->
+            <select id="site-select" title="Choisissez un site"></select>
+
+            <!-- Carte Sites Container -->
+            <div class="chart-container">
+               
+              <!-- Loader -->
+              <div class="loader">
+                <i class="fas fa-sun fa-5x fa-spin text-primary"></i>
+                <span>Calculs en cours..</span>
+              </div>
+            
+              <!-- Carte Sites -->
+              <div class="chart"></div>
+              
+            </div>
+        </div>
+        
+        
+      </div>
+      <!-- End Card -->
+        
+    </div>
+    <!-- End Fragment -->
+    
+  </body>
+</html>

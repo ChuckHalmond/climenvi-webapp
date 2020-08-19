@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/template}">
+  <head>
+  	<meta charset="UTF-8">
+      <title>Accueil</title>
+  </head>
+  <body>
+  
+    <!-- Begin Page Content -->
+    <div layout:fragment="_content" class="container-fluid">
+      
+      <!-- Page Heading -->
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Accueil</h1>
+      </div>
+      
+      
+      <!-- Begin Row 1 -->
+      <div class="row">
+      
+        <!-- Begin Row 1 Col 1 -->
+        <div class="col-sm-12 text-center">
+        
+          <img class="w-100" style="max-width: 600px" th:src="@{~/img/construction.svg}">
+          <p class="h3 mb-20">En développement...</p>
+          
+        
+        </div>
+        <!-- End Row 1 Col 1 -->
+      </div>
+      <!-- End Row 1 -->
+      
+    </div>
+    <!-- End Page Content -->
+
+  </body>
+</html>

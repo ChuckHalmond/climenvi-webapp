@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  </head>
+  <body>
+  
+    <!-- Begin Logout Modal -->
+    <div th:fragment="_login(categories)" class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    
+      <!-- Modal Dialog -->
+      <div class="modal-dialog" role="document">
+      
+        <!-- Begin Modal Content -->
+        <div class="modal-content">
+        
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="profilModalLabel">S'identifier</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          
+          <!-- Modal Body -->
+          <div class="modal-body">
+
+            <label for="categorie-select">Continuer en tant que</label>
+            
+            <div class="text-center">
+              <select id="categorie-select" title="Choisissez une catégorie" class="shadow">
+                          
+              <th:block th:each="categorie : ${categories}">
+              
+                <option th:value="${categorie}" th:text="${categorie}"></option>
+                
+              </th:block>
+              
+             </select>
+            </div>
+
+          </div>
+          
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+            <a class="btn btn-primary disabled" href="#">Valider</a>
+          </div>
+          
+        </div>
+        <!-- End Modal Content -->
+        
+      </div>
+      <!-- End Modal Dialog -->
+     
+      <script>
+          $(document).ready(function() {
+          	
+              var categorieSelect = document.getElementById("categorie-select");
+              
+              $(categorieSelect).selectpicker({
+              	width: "auto"
+              });
+          });
+      </script>
+    
+    </div>
+    <!-- End Logout Modal -->
+    
+  </body>
+</html>

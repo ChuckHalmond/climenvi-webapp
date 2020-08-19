@@ -1,0 +1,89 @@
+
+/*----------------------*/
+/*		indices.html	*/
+/*----------------------*/
+
+/* 		#enums 		*/
+
+#enums {
+  margin-bottom: 8px;
+}
+
+#enums > * {
+  margin-left: 5px;
+  margin-bottom: 8px;
+}
+
+/*	.bootstrap-select	*/
+
+:not(.bootstrap-select) select {
+  display: none; /* cache les select avant que selectpicker soit lance */
+}
+
+
+.bootstrap-select .fa {
+  margin-right: 8px; /* marge avant les glyphicon dans le titre du select */
+}
+
+
+.bootstrap-select .dropdown-menu .fa {
+  visibility: hidden; /* cache les glyphicon a l'interieur du select */
+}
+
+/*----------------------------------------------*/
+/*		_indice.html	/	_carte-sites.html	*/
+/*----------------------------------------------*/
+
+/*		.card-container		*/
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+}
+
+/*		.card		*/
+
+.card {
+  width: 100%;
+}
+
+/*		.chart-container		*/
+
+.chart-container {
+  position: relative;
+  padding-bottom: 48%;
+}
+
+/*		.chart		*/
+
+.chart {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*		.text		*/
+
+.text:empty {
+  display: none;	/* cache les paragraphes vides */
+}
+
+/* 		.loader 		*/
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.loader span {
+  margin-top: 15px;
+}

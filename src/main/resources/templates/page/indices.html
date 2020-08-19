@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/template}">
+  <head>
+  	<meta charset="UTF-8">
+      <title>Indices</title>
+  </head>
+  <body>
+  
+    <!-- Begin Page Content -->
+    <div layout:fragment="_content" class="container-fluid">
+      
+      <!-- Page Heading -->
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Indices</h1>
+      </div>
+     
+     <!-- Begin Row 1 -->
+     <div class="row">
+       
+      <!-- Begin Col 1 Row 1 -->
+      <div id="enums" class="col-sm-12">
+       
+        <!-- Scenario Select -->
+        <select id="scenario-select" title="Choisissez un scénario" class="shadow"></select>
+        
+        <!-- Periode Select -->
+        <select id="periode-select" title="Choisissez une période" class="shadow"></select>
+        
+        <!-- Indices Select -->
+        <select id="indices-select" multiple title="Choisissez les indices à afficher" class="shadow"></select>
+   
+      </div>
+      <!-- End Col 1 Row 1 -->
+       
+     </div>
+     <!-- End Row 1 -->
+      
+     <!-- Begin Row 2 -->
+     <div class="row">
+
+        <!-- Fragment - Carte Sites -->
+        <div th:replace="fragment/_carte-sites :: _carte-sites"></div>
+        
+        <th:block th:each="indice : ${indices}">
+
+          <!-- Fragment - Indice -->
+          <div th:replace="fragment/_indice :: _indice(${indice})"></div>
+        
+        </th:block>
+          
+      </div>
+      <!-- End Row 2 -->
+  
+      <!-- ========== -->
+      <!--     JS     -->
+      <!-- ========== -->
+
+      <!-- Amcharts -->
+      <script src="https://www.amcharts.com/lib/4/core.js"></script>
+      <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+      <script src="https://www.amcharts.com/lib/4/maps.js"></script>
+            
+      <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+      <script src="https://www.amcharts.com/lib/4/plugins/regression.js"></script> 
+      <script src="https://www.amcharts.com/lib/4/geodata/franceDepartmentsHigh.js"></script>
+
+      <!-- Scripts -->
+      <script th:src="@{~/js/Outils.js}"></script>
+      <script th:src="@{~/js/OutilsAmcharts.js}"></script>
+      <script th:src="@{~/js/Enums.js}"></script>
+      <script th:src="@{~/js/Selects.js}"></script>
+
+      <!-- Types de representation -->
+      <script th:src="@{~/js/indice/RepresentationIndice.js}"></script>
+      <th:block th:each="prototypeRepresentation : ${prototypesRepresentation}">
+        <script th:src="@{'~/js/indice/RepresentationIndice' + ${prototypeRepresentation.nom} + '.js'}"></script>
+      </th:block>
+      
+      <script th:src="@{~/js/CarteSites.js}"></script>
+      
+      <script>
+		
+		var Carte = {},
+			RepresentationsIndices = [],
+			MajRepresentations;
+		
+      	$(document).ready(function() {
+    		$(document).on("EnumsPret", function() {
+
+    			/*----------------------*/
+    			/*		Carte Sites 	*/
+    			/*----------------------*/	
+    			
+    			Carte = new CarteSites();
+    			Carte.integrerSites(Enums.Sites);
+
+    			/*--------------------------*/
+    			/*		Representations 	*/
+    			/*--------------------------*/		
+
+    			Enums.Indices.forEach(function(indice) {
+					var nomRepresentation = "RepresentationIndice" + indice.representation.prototype.nom;
+					
+    				if (typeof window[nomRepresentation] === "function") {
+    					RepresentationsIndices.push(new window[nomRepresentation](indice, indice.representation.cumulative));
+    				}
+    				else {
+    					Logger.erreur("Prototype '" + nomRepresentation + "' (javascript) inaccessible");
+    				}
+    			});
+    			
+    			MajRepresentations = function() {
+    				RepresentationsIndices.forEach(function(representation) {
+    					RepresentationIndice.prototype.mettreAJourRepresentation.call(
+    							representation,
+    							Scenario,
+    							Periode,
+    							Site
+    					);
+    				});
+    			};
+
+    			MajSite();
+    			MajScenario();
+    			MajPeriode();
+    			
+    			MajRepresentations();
+    		});
+  		});
+      </script>
+
+    </div>
+    <!-- End Page Content -->
+    
+  </body>
+</html>
